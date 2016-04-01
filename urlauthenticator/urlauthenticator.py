@@ -10,6 +10,8 @@ class UrlAuthenticator(Authenticator):
     """
     """
 
+    # config values
+
     # address of the server hosting the login service
     server_address = Unicode(
         default_value='http://localhost',
@@ -37,5 +39,9 @@ class UrlAuthenticator(Authenticator):
         """
         Return the username if the authentication passes, None otherwise.
         """
-        # TODO: this lets anyone through. change to actually authenticate!
-        return data['username']
+        # TODO: this lets noone through. change to actually authenticate!
+        print('UrlAuthenticator.authenticate server_address is: %s' % (self.server_address))
+        print('UrlAuthenticator.authenticate server_port is: %s' % (self.server_port))
+        print('UrlAuthenticator.authenticate login_route is: %s' % (self.login_route))
+        return None
+#        return data['username']
