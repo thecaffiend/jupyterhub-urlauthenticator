@@ -34,6 +34,7 @@ jupyterhub).
 ## TODO
 * get this on pypi
 * make authenticator smarter about trailing/leading slashes in URL/routes
+* add a way to specify header values (right now json only)
 * Add error handling.
 * tests
 * better code/auto doc
