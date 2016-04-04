@@ -18,6 +18,8 @@ values):
 c.JupyterHub.authenticator_class = 'urlauthenticator.UrlAuthenticator'
 c.UrlAuthenticator.server_address = 'http://[address]'
 c.UrlAuthenticator.server_port = [port]
+# This does no magic with slashes. If you require a trailing one and it's not
+# provided, this will error now. Same with leading slash (NEEDED FOR NOW)
 c.UrlAuthenticator.login_route = '[/path/to/login/service]'
 ```
 
@@ -31,6 +33,8 @@ jupyterhub).
 
 ## TODO
 * get this on pypi
+* make authenticator smarter about trailing/leading slashes in URL/routes
+* Add error handling.
 * tests
 * better code/auto doc
 
