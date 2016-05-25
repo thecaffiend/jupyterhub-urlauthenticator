@@ -25,7 +25,7 @@ c.UrlAuthenticator.login_route = '[/path/to/login/service]'
 
 ## Installation
 ```
-pip install [-e] git+git://github.com/theaffiend/jupyterhub-urlauthenticator.git
+pip install [-e] git+git://github.com/thecaffiend/jupyterhub-urlauthenticator.git
 ```
 
 It has no additional dependencies beyond JupyterHub (tornado is installed by
