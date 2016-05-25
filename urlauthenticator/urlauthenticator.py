@@ -46,6 +46,14 @@ class UrlAuthenticator(Authenticator):
             handler - the RequestHandler from Jupyter
             data - the data from the hub login form.
         """
+        resp = self.do_request(data)
+        return self.process_response(resp)
+
+    def do_request(self, data):
+        """
+        send the request with the user creds to the logon server. return the
+        response.
+        """
         url = '%s:%s%s' % (
             self.server_address,
             self.server_port,
@@ -61,12 +69,18 @@ class UrlAuthenticator(Authenticator):
             resp = f.read()
             f.close()
 
+        return resp
+
+    def process_response(self, resp):
+        """
+        do whatever checks are necessary against the response to determine if
+        the user should be authenticated.
+        """
         # if we had a good response, get the user name out of it (if there) and
         # return that. otherwise, return None (indicated bad login attempt)
-        if resp is not None:
+        if resp:
             d = json.loads(resp.decode())
-            uname = d.get('username', None)
-            return uname
+            return d.get('username', None)
 
         return None
 
