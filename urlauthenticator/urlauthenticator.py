@@ -65,9 +65,12 @@ class UrlAuthenticator(Authenticator):
         resp = None
 
         # hit the url and hopefully get a good response
-        with urllib.request.urlopen(r) as f:
-            resp = f.read()
-            f.close()
+        try:
+            with urllib.request.urlopen(r) as f:
+                resp = f.read()
+                f.close()
+        except urllib.error.HTTPError:
+            return None
 
         return resp
 
