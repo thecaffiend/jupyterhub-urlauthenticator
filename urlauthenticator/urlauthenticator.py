@@ -67,8 +67,7 @@ class UrlAuthenticator(Authenticator):
         # hit the url and hopefully get a good response
         with urllib.request.urlopen(r) as f:
             resp = f.read()
-            f.close()
-
+        
         return resp
 
     def process_response(self, resp):
